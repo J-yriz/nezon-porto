@@ -1,16 +1,68 @@
-// Color Pallate: https://colorhunt.co/palette/6482ad7fa1c3e2dad6f5eded
-'use client';
+// Color Pallate: https://colorhunt.co/palette/1e03420e46a39ac8cde1f7f5
+"use client";
+
+import Cookies from "js-cookie";
+import { useEffect, useState, useRef } from "react";
 
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
+import PostProduct from "@/components/postProduct";
 import ToTop from "@/components/ToTop";
 
 export default function Home() {
-    return (
-        <main>
-            <Navbar />
-            <Header />
-            <ToTop />
-        </main>
-    );
+  const [isOn, setIsOn] = useState<boolean>(false);
+  const [initialized, setInitialized] = useState<boolean>(false);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [setWindowWidth]);
+
+  useEffect(() => {
+    const html = document.querySelector("html") as HTMLHtmlElement;
+    const themeCookie = Cookies.get("theme");
+
+    if (themeCookie === "dark") {
+      setIsOn(true);
+      html.classList.add("dark");
+    } else {
+      setIsOn(false);
+      html.classList.remove("dark");
+    }
+
+    setInitialized(true);
+  }, []);
+
+  useEffect(() => {
+    if (!initialized) return;
+
+    const html = document.querySelector("html") as HTMLHtmlElement;
+    if (isOn) {
+      html.classList.add("dark");
+      Cookies.set("theme", "dark", { expires: 30 });
+    } else {
+      html.classList.remove("dark");
+      Cookies.set("theme", "light", { expires: 30 });
+    }
+  }, [isOn, initialized]);
+
+  return (
+    <main className="container mx-auto">
+      <Navbar isOn={isOn} setIsOn={setIsOn} windowWidth={windowWidth} />
+      <Header windowWidth={windowWidth} />
+      <PostProduct />
+      {/* ToTop button */}
+      <ToTop />
+    </main>
+  );
 }

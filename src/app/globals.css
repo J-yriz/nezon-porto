@@ -16,6 +16,22 @@
   }
 }
 
-body {
-  background: #105b7a;
+@layer base {
+  .font-outline-2-dark {
+    color: #1E0342;
+    text-shadow: -2px -2px 0 #E1F7F5,
+      2px -2px 0 #E1F7F5,
+      -2px 2px 0 #E1F7F5,
+      2px 2px 0 #E1F7F5;
+    ;
+  }
+
+  .font-outline-2-light {
+    color: #E1F7F5;
+    text-shadow: -2px -2px 0 #1E0342,
+      2px -2px 0 #1E0342,
+      -2px 2px 0 #1E0342,
+      2px 2px 0 #1E0342;
+    ;
+  }
 }
