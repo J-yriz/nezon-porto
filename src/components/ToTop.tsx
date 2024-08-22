@@ -17,7 +17,7 @@ export default function ToTop() {
 
   return (
     <div
-      className={`relative ${scrolled ? "" : "hidden"} z-50`}
+      className={`relative ${scrolled ? "" : "hidden"} z-40`}
       onClick={() => {
         window.scrollTo({ top: 0 });
       }}

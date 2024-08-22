@@ -1,11 +1,15 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navbarClick = {
+  '/': {
+    name: "home",
+  },
   "#postservices": {
     name: "services",
   },
-  "/contact": {
+  "#contact": {
     name: "contact",
   },
 };
@@ -17,6 +21,7 @@ interface INavbarParams {
 }
 
 export default function Navbar({ isOn, setIsOn, windowWidth }: INavbarParams) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [phoneNav, setPhoneNav] = useState<boolean>(false);
 
@@ -42,15 +47,15 @@ export default function Navbar({ isOn, setIsOn, windowWidth }: INavbarParams) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-50 px-16 text-xl backdrop-blur-sm transition-all ${
-        scrolled ? "bg-lightBlue/90 py-5 dark:bg-blueCus/90" : "py-8"
-      } text-darkBlue dark:text-liteLightBlue`}
+      className={`fixed left-0 right-0 top-0 z-50 px-16 text-xl text-darkBlue transition-all dark:text-liteLightBlue ${
+        scrolled ? "bg-lightBlue/90 py-5 backdrop-blur-sm dark:bg-blueCus/90" : "py-8"
+      }`}
     >
       {windowWidth > 640 && (
         <div className="flex items-center justify-between">
           <ul className="flex items-center justify-center gap-x-5">
             {Object.entries(navbarClick).map(([path, { name }]) => (
-              <li key={path} className="hover:text-gray-800">
+              <li key={path} className="hover:text-gray-600 dark:hover:text-lightBlue">
                 <Link href={path}>{name.charAt(0).toUpperCase() + name.slice(1)}</Link>
               </li>
             ))}
@@ -90,19 +95,16 @@ export default function Navbar({ isOn, setIsOn, windowWidth }: INavbarParams) {
           </button>
           {phoneNav && (
             <div className="fixed left-0 top-0 z-50 h-screen w-full bg-lightBlue dark:bg-blueCus">
-              <ul className="ml-3 mt-3 flex flex-col space-y-2 w-32">
+              <ul className="ml-3 mt-3 flex w-32 flex-col space-y-2">
                 {Object.entries(navbarClick).map(([path, { name }]) => (
-                  <li key={path} className="hover:text-gray-800">
-                    <Link
-                      onClick={() => setPhoneNav(!phoneNav)}
-                      href={path}
-                    >
+                  <li key={path} className="hover:text-gray-800 dark:hover:text-lightBlue">
+                    <Link onClick={() => setPhoneNav(!phoneNav)} href={path}>
                       {name.charAt(0).toUpperCase() + name.slice(1)}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <div className="flex space-x-5 absolute right-5 top-5">
+              <div className="absolute right-5 top-5 flex space-x-5">
                 {/* Button Theme */}
                 <div className="flex items-center gap-x-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -125,10 +127,7 @@ export default function Navbar({ isOn, setIsOn, windowWidth }: INavbarParams) {
                     />
                   </svg>
                 </div>
-                <button
-                  onClick={() => setPhoneNav(!phoneNav)}
-                  className="rounded-md bg-liteLightBlue p-1 hover:shadow-lg dark:bg-darkBlue"
-                >
+                <button onClick={() => setPhoneNav(!phoneNav)} className="rounded-md bg-liteLightBlue p-1 hover:shadow-lg dark:bg-darkBlue">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                     <path
                       fillRule="evenodd"

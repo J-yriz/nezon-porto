@@ -34,6 +34,9 @@ const Header = ({ windowWidth }: IHeaderParams) => (
               <Link href={"#"} target="_blank">
                 <Image src={"/icon/instagram.svg"} alt="instagram" width={40} height={40} className="rounded-md bg-lightBlue p-1 dark:bg-blueCus" />
               </Link>
+              <Link href={"https://www.youtube.com/channel/UCNlSN31zKSfnmjBgRirM6NA"} target="_blank">
+                <Image src={"/icon/youtube.svg"} alt="youtube" width={40} height={40} className="rounded-md bg-lightBlue p-1 dark:bg-blueCus" />
+              </Link>
             </div>
           </div>
         </div>
