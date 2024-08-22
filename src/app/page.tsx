@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import PostProduct from "@/components/postProduct";
+import Contact from "@/components/Contact";
 import ToTop from "@/components/ToTop";
 
 export default function Home() {
@@ -58,11 +59,23 @@ export default function Home() {
 
   return (
     <main className="container mx-auto">
-      <Navbar isOn={isOn} setIsOn={setIsOn} windowWidth={windowWidth} />
-      <Header windowWidth={windowWidth} />
-      <PostProduct />
-      {/* ToTop button */}
-      <ToTop />
+      {windowWidth <= 1600 && (
+        <>
+          <Navbar isOn={isOn} setIsOn={setIsOn} windowWidth={windowWidth} />
+          <Header windowWidth={windowWidth} />
+          <PostProduct />
+          <Contact />
+          {/* ToTop button */}
+          <ToTop />
+        </>
+      )}
+      {windowWidth > 1600 && (
+        <>
+          <div className="flex h-screen items-center justify-center">
+            <p className="text-6xl font-bold">Please resize your window to less than 1600px</p>
+          </div>
+        </>
+      )}
     </main>
   );
 }
