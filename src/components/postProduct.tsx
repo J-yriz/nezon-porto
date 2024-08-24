@@ -2,12 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-interface IDataJSON {
-  id: number;
-  name_project: string;
-  type_project: string;
-  image_project: string;
-}
+import { IDataJSON } from "@/utils/interfaces";
 
 export default function PostProduct() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -50,10 +45,10 @@ export default function PostProduct() {
 
   return (
     <div id="postservices" className="mt-5 px-10 lg:mt-24 xl:px-28">
-      <p className="text-xl font-bold">SERVICES</p>
-      <div className="relative mt-5 columns-1 gap-3 sm:columns-2 lg:columns-3">
+      <p className="text-xl font-bold">SERVICES PROJECT</p>
+      <div className="px-1 relative my-5 columns-1 gap-3 sm:columns-2 lg:columns-3">
         {dataJson.map((data, i) => {
-          if (i <= 9) {
+          if (i <= 7) {
             return (
               <div key={i} className="mb-4 flex break-inside-avoid justify-center bg-lightBlue p-1 dark:bg-blueCus">
                 <button
@@ -67,9 +62,9 @@ export default function PostProduct() {
             );
           }
         })}
-        {dataJson.length > 8 && (
-          <div className="absolute bottom-0 left-1/2 z-10 flex h-[550px] min-w-full -translate-x-1/2 transform items-center justify-center bg-gradient-to-t from-liteLightBlue from-50% to-darkBlue/0 2xl:h-[700px] dark:from-darkBlue">
-            <Link href={`/product`} className="text-md rounded-lg bg-lightBlue px-5 py-3 font-semibold dark:bg-blueCus">
+        {dataJson.length > 7 && (
+          <div className="absolute bottom-0 left-1/2 z-10 flex h-72 min-w-full -translate-x-1/2 transform items-center justify-center bg-gradient-to-t from-liteLightBlue from-50% to-darkBlue/0 dark:from-darkBlue">
+            <Link href={`/project`} className="text-md rounded-lg bg-lightBlue px-5 py-3 font-semibold dark:bg-blueCus">
               SEE MORE
             </Link>
           </div>
