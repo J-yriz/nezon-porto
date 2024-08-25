@@ -1,0 +1,45 @@
+{
+    "about": [
+        {
+            "title": "biography",
+            "body": ["I am an SMK student living outside Java, balancing studies with freelancing. This journey has taught me adaptability, discipline, and a commitment to growth."]
+        },
+        {
+            "title": "skills",
+            "body": [
+                "Video Editing • ",
+                "Pixel Art • ",
+                "Draw Image • ",
+                "Building Minecraft • ",
+                "Designer"
+            ]
+        },
+        {
+            "title": "social media",
+            "body": [
+                {
+                    "name": "Instagram",
+                    "link": "https://www.instagram.com/notnezon/"
+                },
+                {
+                    "name": "Youtube",
+                    "link": "https://www.youtube.com/channel/UCNlSN31zKSfnmjBgRirM6NA"
+                }
+            ]
+        }
+    ],
+    "exp": [
+        {
+            "title": "project done",
+            "body": 1000
+        },
+        {
+            "title": "work experience",
+            "body": "1 YR+"
+        },
+        {
+            "title": "client order",
+            "body": 130
+        }
+    ]
+}
