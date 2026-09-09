@@ -38,3 +38,6 @@ next-env.d.ts
 
 # local files
 package-lock.json
+
+# playwright mcp artifacts (local debug only)
+.playwright-mcp/

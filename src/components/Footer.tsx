@@ -4,23 +4,24 @@ import Link from "next/link";
 
 import IconInstagram from "./icons/icons.instagram";
 import IconYoutube from "./icons/icons.youtube";
-import IconDisocrd from "./icons/icons.discord";
-
-import useWindowWidth from "@/utils/windowWidth";
+import IconDiscord from "./icons/icons.discord";
 
 export default function Footer() {
-  const windowWidth = useWindowWidth();
-
   return (
-    windowWidth <= 1600 && (
-      <footer className="w-full bg-lightBlue px-20 py-16 dark:bg-blueCus">
+    <footer className="w-full bg-lightBlue px-6 py-16 dark:bg-blueCus sm:px-20">
+      <div className="mx-auto w-full max-w-[1600px]">
         <div className="flex items-center justify-between">
           <p className="text-xl font-semibold">Nezon[SKMY]</p>
           <div className="flex gap-x-4">
-            <Link href={"https://www.instagram.com/notnezon/"} target="_blank">
+            <Link href="https://www.instagram.com/notnezon/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <IconInstagram />
             </Link>
-            <Link href={"https://www.youtube.com/channel/UCNlSN31zKSfnmjBgRirM6NA"} target="_blank">
+            <Link
+              href="https://www.youtube.com/channel/UCNlSN31zKSfnmjBgRirM6NA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
               <IconYoutube />
             </Link>
           </div>
@@ -30,15 +31,15 @@ export default function Footer() {
           <div>
             <p className="text-xl font-bold">Contact Me</p>
             <div className="flex items-center space-x-2">
-              <IconDisocrd />
+              <IconDiscord />
               <p className="select-all">.nezon</p>
             </div>
           </div>
           <div>
             <p className="text-xl font-bold">Order Me</p>
             <div className="flex items-center space-x-2">
-              <IconDisocrd />
-              <Link href={`https://discord.gg/WFNPWSEjFZ`} target="_blank" className="hover:underline">
+              <IconDiscord />
+              <Link href="https://discord.gg/WFNPWSEjFZ" target="_blank" rel="noopener noreferrer" className="hover:underline">
                 RAZNAR.ID
               </Link>
             </div>
@@ -47,10 +48,10 @@ export default function Footer() {
             <p className="text-xl font-bold">Pages</p>
             <ul className="flex flex-col">
               <li>
-                <Link href={"/"}>Home</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href={"/project"}>Projects</Link>
+                <Link href="/project">Projects</Link>
               </li>
             </ul>
           </div>
@@ -60,14 +61,14 @@ export default function Footer() {
           <p className="text-sm font-semibold">
             &copy; {new Date().getFullYear() !== 2024 ? "2024 - " : ""} {new Date().getFullYear()}{" "}
             <span className="hover:underline">
-              <Link href={`https://github.com/J-yriz`} target="_blank">
+              <Link href="https://github.com/J-yriz" target="_blank" rel="noopener noreferrer">
                 Jariz
               </Link>
             </span>
             . All rights reserved.
           </p>
         </div>
-      </footer>
-    )
+      </div>
+    </footer>
   );
 }
